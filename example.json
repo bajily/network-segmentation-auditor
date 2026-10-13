@@ -1,0 +1,37 @@
+{
+  "rules": [
+    {
+      "id": "wide-admin",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.0.0/8",
+      "protocol": "tcp",
+      "ports": [
+        [
+          1,
+          65535
+        ]
+      ],
+      "action": "allow"
+    },
+    {
+      "id": "deny-admin",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.0.0/8",
+      "protocol": "tcp",
+      "ports": [
+        22
+      ],
+      "action": "deny"
+    }
+  ],
+  "flows": [
+    {
+      "id": "public-to-admin",
+      "source": "192.0.2.20",
+      "destination": "10.1.0.10",
+      "protocol": "tcp",
+      "port": 22,
+      "expected": "deny"
+    }
+  ]
+}
